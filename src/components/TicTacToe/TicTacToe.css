@@ -1,0 +1,155 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero {
+    width: 75px;
+    height: 80px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    display: grid;
+    grid-template-rows: 40% 60%;
+    text-align: center;
+}
+
+.turn_display {
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#turn_title {
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.gap-2 {
+    display: flex;
+    gap: .5rem;
+    font-size: 1.2rem;
+}
+
+.reset {
+    margin: 0;
+    padding: .8rem 1.2rem;
+}
+
+.board {
+    margin: 1.5rem;
+    width: 275px;
+    height: 275px;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    border-radius: 20px;
+    border: 1px solid #eee;
+    overflow: hidden;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.cell {
+    width: auto;
+    height: auto;
+    border: 1px solid #eee;
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+    transition: .5s;
+
+    & * {
+        font-size: 3rem;
+    }
+}
+
+.cross_icon {
+    color: #2D93AD;
+}
+
+.circle_icon {
+    color: #D05353;
+}
+
+.cell:hover:not(.winner-cell-cross):not(.winner-cell-circle):hover {
+    background: #454545;
+}
+
+.visible svg {
+    display: block;
+}
+
+.hidden svg {
+    display: none;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 0;
+    padding: 1.5rem;
+    width: 100%;
+
+    & #react_icon {
+        animation: react-rotate 20s linear infinite forwards;
+    }
+
+    & .anchor_footer {
+        display: flex;
+        align-items: center;
+        gap: .8rem;
+        color: #eee;
+        transition: .2s;
+    }
+
+    & .anchor_footer:hover {
+        color: #eee;
+        transform: scale(1.05);
+    }
+
+    & img {
+        width: 2.5rem;
+    }
+}
+
+@keyframes react-rotate {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+@media (width <=500px) {
+    .no_mobile {
+        display: none;
+    }
+}
+
+.winner-cell-cross {
+    background: #2D93AD;
+
+    & * {
+        color: #050505;
+    }
+}
+
+.winner-cell-circle {
+    background: #D05353;
+
+    & * {
+        color: #050505;
+    }
+}
